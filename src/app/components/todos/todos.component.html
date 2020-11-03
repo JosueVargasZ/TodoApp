@@ -1,0 +1,49 @@
+
+<ul id="to-dos-wrapper">
+    <ng-container *ngIf="todos">
+        <li class="to-do-item fading-in"
+            *ngFor="let todo of todos; let i=index;"
+            #todoItem>     
+            <div class="to-do" >
+                <input type="checkbox" 
+                       [checked]=" todo.done "
+                       (change)="completeTodo( i, !todo.done )"
+                        >
+                <span class="custom-checkbox"></span>
+                <p class="to-do-text"
+                [class.to-do-done] = "todo.done ">{{ todo.todo }}</p>
+            </div>
+            <div class="edit-to-do">
+                <button class="edit" 
+                        type="button"
+                        (click)=" getTodo( i ) "><i class="far fa-edit"></i></button>
+                <button class="delete" 
+                        type="button"
+                        (click)=" deleteTodo( i, todoItem )" ><i class="far fa-trash-alt"></i></button>
+            </div>
+        </li>
+    </ng-container>
+    
+</ul>
+
+<div id="create-task">
+    <button type="button" 
+            class="new-task"
+            *ngIf="!animate"
+            [class.fading-out]="animate"
+            [class.fading-in]="!animate"
+            (click)=" openModal()"> <i class="fas fa-plus"></i> New task</button>
+</div>
+
+<app-new-todo *ngIf="showModal"
+              [class.fading-in]="animate"
+              [class.fading-out]="!animate"
+              (closeModal)="closeModal( $event )"
+              (newTodo)=" createTodo( $event )"></app-new-todo>
+
+<app-new-todo *ngIf="showUpdateModal"
+              [todo]="todo"
+              [class.fading-in]="animate"
+              [class.fading-out]="!animate"
+              (closeModal)="closeModal( $event )"
+              (updateTodo)=" updateTodo( $event )"></app-new-todo>

@@ -1,0 +1,30 @@
+<div class="todo-modal">
+    <div *ngIf="!todo" 
+         class="modal-wrapper">
+        <button class="close-modal"
+                (click)=" close() "><i class="fas fa-times"></i></button>
+        <input type="text"
+               appSetAutoFocus 
+               name="new-task"
+               #task 
+               placeholder="New task"
+               (keyup.enter)=" createTask( task.value ) ">
+        <button class="add-todo"
+                (click)=" createTask( task.value ) "> <i class="fas fa-plus"></i> </button>
+    </div>
+
+    <div *ngIf="todo" 
+         class="modal-wrapper">
+        <button class="close-modal"
+                (click)=" close() "><i class="fas fa-times"></i></button>
+        <input type="text"
+               appSetAutoFocus 
+               name="new-task"
+               #task 
+               placeholder="New task"
+               [value]="todo.todo"
+               (keyup.enter)=" updateTask( task.value ) ">
+        <button class="add-todo"
+                (click)=" updateTask( task.value ) "> <i class="fas fa-plus"></i> </button>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+
+<header>
+    <div id="view-toggle">
+        <button type="button"><i class="fas fa-th"></i></button>
+    </div>    
+    <!-- <button type="button" id="view-toggle"><i class="fas fa-list"></i></i></button> -->
+    
+    <div id="title">
+        <h1>To-Do List</h1>
+    </div>
+    <div class="custom-select">
+        <select id="sort-by"
+                #filter
+                (change) = "onFilter( filter.value )">
+            <option selected value="All" >All</option>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <div id="select-arrow"></div>
+    </div>
+</header>

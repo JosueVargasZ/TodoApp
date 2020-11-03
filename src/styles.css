@@ -1,1 +1,598 @@
-/* You can add global styles to this file, and also import other style files */
+/*==========General==========*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+:root{
+    --backgroundColor: #E3E9FF;
+    --primaryColor: #7c41c5;
+    --secondaryColor: #8AC541;
+    --titleColor: #eeeeee;
+    --textColor: #666666;
+}
+
+body{
+    background-color: var(--backgroundColor);
+}
+
+#container{
+    width: 100%;
+    min-height: 537px;
+    margin: 0 auto;
+}
+
+
+/*==========Header==========*/
+header{
+    /* margin-top: 30px; */
+    width: 100%;
+    background-color: var(--primaryColor);
+    height: 40px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+header #view-toggle{
+    flex-basis: 30%;
+    line-height: 40px;
+    padding-left: 3px;
+}
+header #view-toggle > button{
+    background-color: var(--primaryColor);
+    border: none;
+    outline: none;
+}
+
+header #view-toggle > button > i{
+    color: var(--titleColor);
+    font-size: 20px;
+    transition: all 400ms;
+}
+
+header #view-toggle > button:hover > i,
+header #view-toggle > button:focus > i{     
+    color: var(--secondaryColor);
+}
+
+header #title{
+    flex-basis: 40%;
+    text-align: center;
+    line-height: 40px;
+}
+header #title > h1{
+    color: var(--titleColor);
+    font-size: 26px;
+    font-weight: bolder;
+}
+.custom-select{
+    flex-basis: 30%;
+    position: relative;
+}
+
+.custom-select select{
+    width: 100%;
+    background-color: var(--primaryColor);
+    height: 40px;
+    border: none;
+    outline: none;
+    color: var(--titleColor);
+    appearance: none;
+    padding-right: 20%;
+    padding-left: 10%;
+    transition: color 400ms;
+    cursor: pointer;
+}
+
+.custom-select #select-arrow{
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    top: 0;
+    right: 0px;
+    pointer-events: none;
+}
+
+.custom-select #select-arrow::before,
+.custom-select #select-arrow::after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 400ms;
+}
+
+.custom-select #select-arrow::before{
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid var(--titleColor);
+    top: 35%;
+}
+
+.custom-select #select-arrow::after{
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--titleColor);
+    top: 60%;
+
+}
+
+.custom-select select:hover + #select-arrow::before,
+.custom-select select:focus + #select-arrow::before{
+
+    border-bottom: 6px solid var(--secondaryColor);
+}
+
+.custom-select select:hover + #select-arrow::after,
+.custom-select select:focus + #select-arrow::after{
+    border-top: 6px solid var(--secondaryColor);
+}
+
+
+/*==========To-dos==========*/
+#to-dos-wrapper{
+    /* margin-top: 30px; */
+    background-color: #ffffff;
+    box-shadow:
+        0 0.6px 3.4px rgba(0, 0, 0, 0.022),
+        0 1.5px 8.7px rgba(0, 0, 0, 0.031),
+        0 3px 17.7px rgba(0, 0, 0, 0.039),
+        0 6px 36.5px rgba(0, 0, 0, 0.048),
+        0 16px 100px rgba(0, 0, 0, 0.07);
+    padding: 40px 20px;
+    min-height: 400px; 
+    display: flex;
+    flex-flow: column wrap;
+
+}
+
+.to-do-item{
+    min-height: 30px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.to-do-item > .to-do{
+    position: relative;
+    flex-basis: 80%;
+    color: var(--textColor);
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+
+}
+
+.to-do-item > .to-do > .to-do-text{
+    flex-basis: 85%;
+    padding-left: 20px;
+    transition: color 400ms;
+}
+
+
+.to-do-done{
+    color: #888888;
+    text-decoration: line-through;
+}
+
+.to-do-item > .to-do> input{
+    width: 20px;
+    height: 20px;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.to-do-item > .to-do > .custom-checkbox{
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    transition: background 400ms;
+}
+
+.to-do > input:checked ~ .custom-checkbox {
+    background-color: var(--secondaryColor);
+}
+
+.to-do-item > .to-do > input:hover ~ .custom-checkbox{
+    transform: scale(1.05);
+}
+
+.to-do > .custom-checkbox::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.to-do > input:checked ~ .custom-checkbox::after{
+    content: "";
+    display: block;
+    left: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--titleColor);
+    border-width: 0px 3px 3px 0px;
+    transform: rotate(45deg);
+}
+
+.to-do-item > .edit-to-do{
+    flex-basis: 20%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.to-do-item > .edit-to-do > button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.to-do-item > .edit-to-do > button i{
+    font-size: 22px;
+    color: var(--textColor);
+    transition: color 400ms;
+}
+
+.to-do-item > .edit-to-do > .delete:hover i,
+.to-do-item > .edit-to-do > .delete:focus i{
+    color: rgba(255, 0, 0, 0.664);
+}
+
+.to-do-item > .edit-to-do > .edit:hover i,
+.to-do-item > .edit-to-do > .edit:focus i{
+    color: #7c41c5a6;
+}
+
+
+#create-task{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.new-task{
+    position: absolute;
+    top: -20px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: var(--primaryColor);
+    color: var(--titleColor);
+    font-weight: bolder;
+    font-size: 16px;
+    line-height: 40px;
+    transition: opacity 400ms;
+}
+
+.new-task > i {
+    transition: color 400ms;
+}
+
+.new-task:hover > i ,
+.new-task:focus > i {
+    color: var(--secondaryColor);
+}
+
+.new-task:hover,
+.new-task:focus{
+    opacity: 0.85;
+}
+
+.todo-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.70);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* animation: fadeIn 400ms ease-in; */
+}
+
+.modal-wrapper{
+    position: relative;
+    background-color: white;
+    flex-basis: 90%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.close-modal > i,
+.add-todo > i{
+    font-size: 30px;
+    transition: color 400ms;
+}
+
+.close-modal:hover > i,
+    .close-modal:focus > i{
+    color: rgba(255, 0, 0, 0.664);
+}
+
+.modal-wrapper > input[type="text"],
+.add-todo{
+    height: 40px;
+    outline: none;
+    border: 1px solid var(--primaryColor);
+}
+
+.modal-wrapper > input[type="text"]{
+    flex-basis: 70%;
+    border-right: none;
+    transition: border 400ms;
+    padding-left: 10px;
+    color: var(--textColor);
+
+}
+
+.modal-wrapper > input[type="text"]:hover,
+.modal-wrapper > input[type="text"]:focus{
+    border-color: var(--secondaryColor);
+}
+
+.add-todo{
+    flex-basis: 15%;
+    border-left: none;
+    background-color: var(--primaryColor);
+}
+
+.add-todo > i{
+    display: block;
+    color: var(--titleColor);
+}
+
+.add-todo:hover > i,
+.add-todo:focus > i{
+    color: var(--secondaryColor);
+}
+
+/*==========Animations==========*/
+
+.fading-in{
+    animation: fadeIn 400ms ease-in;
+}
+
+.fading-out{
+    animation: fadeOut 400ms ease-out;
+}
+
+.slide-out{
+    animation: slideOut 400ms ease-out;
+}
+
+
+
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+
+}
+
+@keyframes fadeOut{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+
+}
+
+@keyframes slideOut{
+    from{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    to{
+        transform: translateX(-45px);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+footer{
+    position: relative;
+    bottom: 0px;
+    height: 60px;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+footer div span{
+    font-size: 14px;
+    color: var(--textColor);
+}
+
+@media only screen and (min-width: 450px){
+
+    header #view-toggle{
+        flex-basis: 22%;
+    }
+    
+    header #title{
+        flex-basis: 56%;
+    }
+    
+    .custom-select{
+        flex-basis: 22%;
+    }
+
+    .to-do-item > .to-do{
+        flex-basis: 83%;
+    }
+    
+    .to-do-item > .edit-to-do{
+        flex-basis: 17%;
+
+    }
+}
+
+
+
+@media only screen and (min-width: 576px){
+    
+    #container{
+        width: 95%;
+    }
+
+    header{
+        margin-top: 30px;
+    }
+
+    header #view-toggle{
+        flex-basis: 20%;
+    }
+    
+    header #title{
+        flex-basis: 60%;
+    }
+    
+    .custom-select{
+        flex-basis: 20%;
+    }
+
+    .to-do-item > .to-do{
+        flex-basis: 85%;
+    }
+    
+    .to-do-item > .edit-to-do{
+        flex-basis: 15%;
+
+    }
+
+    .new-task{
+        width: 110px;
+    }
+
+    .modal-wrapper{
+        flex-basis: 80%;
+    }
+
+}
+
+@media only screen and (min-width: 768px){
+
+    #container{
+        width: 90%;
+    }
+
+    header #view-toggle{
+        flex-basis: 17%;
+    }
+    
+    header #title{
+        flex-basis: 66%;
+    }
+    
+    .custom-select{
+        flex-basis: 17%;
+    }
+
+    #to-dos-wrapper{
+        margin-top: 30px;
+        padding: 40px 30px;
+    }
+
+    .to-do-item > .to-do{
+        flex-basis: 90%;
+    }
+    
+    .to-do-item > .edit-to-do{
+        flex-basis: 10%;
+
+    }
+
+    .new-task{
+        width: 115px;
+    }
+
+    .modal-wrapper{
+        flex-basis: 60%;
+    }
+
+}
+
+@media only screen and (min-width: 992px){
+
+    #container{
+        width: 80%;
+    }
+
+    header #view-toggle{
+        flex-basis: 12%;
+    }
+    
+    header #title{
+        flex-basis: 76%;
+    }
+    
+    .custom-select{
+        flex-basis: 12%;
+    }
+
+    #to-dos-wrapper{
+        margin-top: 30px;
+        padding: 40px 40px;
+    }
+
+    .to-do-item > .to-do{
+        flex-basis: 90%;
+    }
+    
+    .to-do-item > .edit-to-do{
+        flex-basis: 10%;
+
+    }
+
+    .new-task{
+        width: 120px;
+    }
+
+    .modal-wrapper{
+        flex-basis: 40%;
+    }
+
+}
