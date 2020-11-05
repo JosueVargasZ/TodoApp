@@ -1,15 +1,73 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+
+import { TodosService } from '../../services/todos.service';
+import { Todo } from '../../interfaces/todo.interface';
 
 @Component({
   selector: 'app-todos-grid',
   templateUrl: './todos-grid.component.html',
   styleUrls: ['./todos-grid.component.css']
 })
-export class TodosGridComponent implements OnInit {
+export class TodosGridComponent implements OnInit, OnChanges {
 
-  constructor() { }
+  @Input() filterTodos: string;
+  public todos: Todo[];
+  public animate:boolean;
+  public showModal:boolean = false;
+  public showUpdateModal:boolean = false;
+  public todo: Todo;
+  public todoId: number;
+
+  constructor( private _todosService: TodosService ) {
+   }
 
   ngOnInit(): void {
   }
 
+  ngOnChanges(){
+    this.todos = this._todosService.listTodos( this.filterTodos );
+  }
+
+  openModal(){
+    this.animate = true;
+    this.showModal = true;
+  }
+
+  closeModal( close:boolean ){
+    this.animate = false
+    setTimeout(() => {
+      this.showModal = close;
+      this.showUpdateModal = close;
+    }, 400);
+  
+  }
+
+  getTodo( id ){
+    this.todo    = this._todosService.listTodo( id );
+    this.todoId  = id;
+    this.animate = true;
+    this.showUpdateModal = true;
+  }
+
+  createTodo( todo:Todo ){
+    this._todosService.newTodo( todo );
+  }
+
+  deleteTodo( id, todo:HTMLElement ){
+    todo.classList.add('slide-out');
+    setTimeout(() => {
+      this._todosService.deleteTodo( id );
+    }, 400);
+
+  }
+
+  updateTodo( todo:Todo ){
+    this._todosService.updateTodo(this.todoId , todo );
+  }
+
+  completeTodo( id, done ){
+    this._todosService.completeTodo( id, done );
+  }
+
 }
+

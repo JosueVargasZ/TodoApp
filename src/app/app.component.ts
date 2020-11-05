@@ -6,12 +6,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ToDoApp';
-  filterTodos : string;
+  public title = 'ToDoApp';
+  public filterTodos : string;
+  public todoGrid: boolean;
 
   constructor(){}
 
   onFilter( value ){
     this.filterTodos = value;
+  }
+
+  onGrid( value: boolean ){
+    this.todoGrid = value;
   }
 }

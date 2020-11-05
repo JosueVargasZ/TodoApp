@@ -1,6 +1,9 @@
 <section id="container">
-<app-navbar (filterTodos)="onFilter( $event )"></app-navbar>
-<app-todos [filterTodos]="filterTodos"></app-todos>
-<!-- <app-todos-grid></app-todos-grid> -->
+<app-navbar (filterTodos)="onFilter( $event )"
+            (todosOnGrid)="onGrid( $event )"></app-navbar>
+<app-todos [filterTodos]="filterTodos"
+           *ngIf="!todoGrid"></app-todos>
+<app-todos-grid [filterTodos]="filterTodos" 
+                *ngIf="todoGrid"></app-todos-grid>
 </section>
 <app-footer></app-footer>

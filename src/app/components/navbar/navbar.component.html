@@ -1,9 +1,14 @@
 
 <header>
     <div id="view-toggle">
-        <button type="button"><i class="fas fa-th"></i></button>
+        <button type="button"
+                (click)="onGrid(!showGrid)">
+                        <i class="fas fa-th"
+                           *ngIf="!showGrid"></i>
+                        <i class="fas fa-list"
+                           *ngIf="showGrid"></i>
+                </button>
     </div>    
-    <!-- <button type="button" id="view-toggle"><i class="fas fa-list"></i></i></button> -->
     
     <div id="title">
         <h1>To-Do List</h1>

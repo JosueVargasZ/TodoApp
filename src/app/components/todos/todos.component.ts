@@ -22,7 +22,6 @@ export class TodosComponent implements OnInit, OnChanges {
    }
 
   ngOnInit(): void {
-    // this.todos = this._todosService.listTodos( this.filterTodos );
   }
 
   ngOnChanges(){
@@ -69,7 +68,5 @@ export class TodosComponent implements OnInit, OnChanges {
   completeTodo( id, done ){
     this._todosService.completeTodo( id, done );
   }
-
-  
 
 }
