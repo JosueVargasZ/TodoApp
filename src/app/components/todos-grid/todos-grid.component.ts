@@ -54,7 +54,7 @@ export class TodosGridComponent implements OnInit, OnChanges {
   }
 
   deleteTodo( id, todo:HTMLElement ){
-    todo.classList.add('slide-out');
+    todo.classList.add('fading-out');
     setTimeout(() => {
       this._todosService.deleteTodo( id );
     }, 400);

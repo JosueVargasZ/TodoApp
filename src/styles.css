@@ -180,7 +180,8 @@ header #title > h1{
     text-decoration: line-through;
 }
 
-.to-do-item > .to-do> input{
+.to-do-item > .to-do> input,
+.to-do-grid-item > .to-do> input{
     width: 20px;
     height: 20px;
     outline: none;
@@ -188,7 +189,8 @@ header #title > h1{
     cursor: pointer;
 }
 
-.to-do-item > .to-do > .custom-checkbox{
+.to-do-item > .to-do > .custom-checkbox,
+.to-do-grid-item > .to-do > .custom-checkbox{
     position: absolute;
     pointer-events: none;
     top: 0;
@@ -204,7 +206,8 @@ header #title > h1{
     background-color: var(--secondaryColor);
 }
 
-.to-do-item > .to-do > input:hover ~ .custom-checkbox{
+.to-do-item > .to-do > input:hover ~ .custom-checkbox,
+.to-do-grid-item > .to-do > input:hover ~ .custom-checkbox{
     transform: scale(1.05);
 }
 
@@ -228,29 +231,39 @@ header #title > h1{
 .to-do-item > .edit-to-do{
     flex-basis: 20%;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 40% 40%;
+    justify-content: center;
+    gap: 5px;
 }
 
-.to-do-item > .edit-to-do > button{
+.to-do-item > .edit-to-do > button,
+.to-do-grid-item > .edit-to-do > button{
     border: none;
     outline: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.to-do-item > .edit-to-do > button i{
+.to-do-item > .edit-to-do > button i,
+.to-do-grid-item > .edit-to-do > button i{
     font-size: 22px;
     color: var(--textColor);
-    transition: color 400ms;
+    transition: color 400ms, opacity 400ms;
 }
 
 .to-do-item > .edit-to-do > .delete:hover i,
-.to-do-item > .edit-to-do > .delete:focus i{
+.to-do-item > .edit-to-do > .delete:focus i,
+.to-do-grid-item > .edit-to-do > .delete:hover i,
+.to-do-grid-item > .edit-to-do > .delete:focus i{
+    opacity: 1;
     color: rgba(255, 0, 0, 0.664);
 }
 
 .to-do-item > .edit-to-do > .edit:hover i,
-.to-do-item > .edit-to-do > .edit:focus i{
+.to-do-item > .edit-to-do > .edit:focus i,
+.to-do-grid-item > .edit-to-do > .edit:hover i,
+.to-do-grid-item > .edit-to-do > .edit:focus i{
+    opacity: 1;
     color: #7c41c5a6;
 }
 
@@ -269,20 +282,84 @@ header #title > h1{
     min-height: 400px; 
     display: grid;
     justify-content: center;
+    align-items: baseline;
     grid-template-columns: 85%;
+    grid-template-rows: min-content;
     gap: 20px;
 }
 
 .to-do-grid-item{
-    min-height: 100px;
+    position: relative;
+    min-height: 130px;
     border-radius: 5px;
     box-shadow:
         0 0.1px 6.2px rgba(0, 0, 0, 0.034),
         0 0.2px 8.4px rgba(0, 0, 0, 0.044),
         0 0.7px 9.3px rgba(0, 0, 0, 0.053),
-        0 4px 10px rgba(0, 0, 0, 0.08);    
+        0 1px 4px rgba(0, 0, 0, 0.08);  
+    border: 1px solid #b2b2b28f; 
+    background-color: #fbfbfb; 
 }
 
+.to-do-grid-item > .to-do{
+    position: relative;
+    color: var(--textColor);
+    padding-top: 20px;
+}
+
+
+.to-do-grid-item > .to-do> input,
+.to-do-grid-item > .to-do > .custom-checkbox{
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    border-radius: 50%;
+}
+
+.to-do-grid-item .to-do > input:checked ~ .custom-checkbox::after{
+    content: "";
+    display: block;
+    top: 1px;
+    left: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--titleColor);
+    border-width: 0px 3px 3px 0px;
+    transform: rotate(45deg);
+}
+
+.to-do-grid-item > .to-do > .to-do-text{
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.to-do-grid-item > .to-do > .to-do-text::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 5px;
+    border: none;
+    opacity: 0.2;
+    background-color: var(--primaryColor);
+}
+
+.to-do-grid-item > .edit-to-do{
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 2px;
+}
+
+.to-do-grid-item > .edit-to-do > button i{
+    font-size: 20px;
+}
+
+.to-do-grid-item > .edit-to-do > button i{
+    opacity: 0.5;
+}
 
 
 #create-task{
@@ -500,6 +577,11 @@ footer div span{
         flex-basis: 17%;
 
     }
+
+    #to-dos-grid-wrapper{
+        grid-template-columns: repeat(2, 50%);
+    }
+
 }
 
 
@@ -568,6 +650,11 @@ footer div span{
         padding: 40px 30px;
     }
 
+    #to-dos-grid-wrapper{
+        margin-top: 30px;
+        grid-template-columns: repeat(3, 30%);
+    }
+
     .to-do-item > .to-do{
         flex-basis: 90%;
     }
@@ -610,6 +697,9 @@ footer div span{
         padding: 40px 40px;
     }
 
+    #to-dos-grid-wrapper{
+        grid-template-columns: repeat(4, 23%);
+    }
     .to-do-item > .to-do{
         flex-basis: 90%;
     }
