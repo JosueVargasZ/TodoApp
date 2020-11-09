@@ -296,9 +296,21 @@ header #title > h1{
         0 0.1px 6.2px rgba(0, 0, 0, 0.034),
         0 0.2px 8.4px rgba(0, 0, 0, 0.044),
         0 0.7px 9.3px rgba(0, 0, 0, 0.053),
+        0 2px 6px rgba(0, 0, 0, 0.08);  
+    border: 1px solid #b2b2b28f; 
+    background-color: #f9f9f9; 
+    transition: background 400ms, box-shadow 400ms;
+}
+
+.to-do-grid-done{
+    box-shadow:
+        0 0.1px 6.2px rgba(0, 0, 0, 0.034),
+        0 0.2px 8.4px rgba(0, 0, 0, 0.044),
+        0 0.7px 9.3px rgba(0, 0, 0, 0.053),
         0 1px 4px rgba(0, 0, 0, 0.08);  
     border: 1px solid #b2b2b28f; 
-    background-color: #fbfbfb; 
+    background-color: #fefefe;
+    transition: background 400ms, box-shadow 400ms;
 }
 
 .to-do-grid-item > .to-do{
@@ -342,6 +354,11 @@ header #title > h1{
     border: none;
     opacity: 0.2;
     background-color: var(--primaryColor);
+    transition: background 400ms;
+}
+
+.to-do-grid-item .to-do > input:checked ~ .to-do-text::before{
+    background-color: var(--secondaryColor);
 }
 
 .to-do-grid-item > .edit-to-do{
