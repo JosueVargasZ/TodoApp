@@ -7,7 +7,7 @@
             <div class="to-do" >
                 <input type="checkbox" 
                        [checked]=" todo.done "
-                       (change)="completeTodo( i, !todo.done )"
+                       (change)="completeTodo( todo.id, !todo.done )"
                         >
                 <span class="custom-checkbox"></span>
                 <p class="to-do-text"
@@ -16,10 +16,10 @@
             <div class="edit-to-do">
                 <button class="edit" 
                         type="button"
-                        (click)=" getTodo( i ) "><i class="far fa-edit"></i></button>
+                        (click)=" getTodo( todo.id ) "><i class="far fa-edit"></i></button>
                 <button class="delete" 
                         type="button"
-                        (click)=" deleteTodo( i, todoItem )" ><i class="far fa-trash-alt"></i></button>
+                        (click)=" deleteTodo( todo.id , todoItem )" ><i class="far fa-trash-alt"></i></button>
             </div>
         </li>
     </ng-container>

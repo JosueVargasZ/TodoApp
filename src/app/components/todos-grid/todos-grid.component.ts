@@ -51,22 +51,25 @@ export class TodosGridComponent implements OnInit, OnChanges {
 
   createTodo( todo:Todo ){
     this._todosService.newTodo( todo );
+    this.todos = this._todosService.listTodos( this.filterTodos );
   }
 
   deleteTodo( id, todo:HTMLElement ){
     todo.classList.add('fading-out');
     setTimeout(() => {
       this._todosService.deleteTodo( id );
-    }, 400);
+    this.todos = this._todosService.listTodos( this.filterTodos );
+    }, 200);
 
   }
 
   updateTodo( todo:Todo ){
-    this._todosService.updateTodo(this.todoId , todo );
+    this._todosService.updateTodo(todo.id , todo );
   }
 
   completeTodo( id, done ){
     this._todosService.completeTodo( id, done );
+    this.todos = this._todosService.listTodos( this.filterTodos );
   }
 
 }

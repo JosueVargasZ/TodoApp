@@ -24,7 +24,7 @@ export class NewTodoComponent implements OnInit {
       return;
     }
     const newTask: Todo = {
-      date: Date.now(),
+      id: Date.now(),
       todo: task,
       done: false
     }
@@ -40,7 +40,7 @@ export class NewTodoComponent implements OnInit {
     }
     
     const newTask: Todo = {
-      date: Date.now(),
+      id: this.todo.id,
       todo: task,
       done: this.todo.done
     }

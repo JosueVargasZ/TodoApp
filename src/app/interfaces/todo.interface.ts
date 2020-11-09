@@ -1,7 +1,7 @@
 
 export interface Todo{
 
-    date :number;
+    id :number;
     todo :string;
     done :boolean;
 }

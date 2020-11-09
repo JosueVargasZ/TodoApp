@@ -25,7 +25,13 @@ export class TodosService {
    }
 
    listTodo( id:number ){
-     return this.todos[id];
+     let todoResponse: Todo;
+     this.todos.map( todo => {
+       if( todo.id === id ){
+        todoResponse = todo; 
+      }
+    });
+    return todoResponse;
    }
 
   newTodo( todo:Todo ){
@@ -34,18 +40,26 @@ export class TodosService {
   }
 
   completeTodo( id:number, done ){
-    this.todos[id].done = done;
+    this.todos.map( todo => {
+      if(todo.id === id ){
+        todo.done = done;
+      } 
+    });
     localStorage.setItem('todos', JSON.stringify( this.todos ) );
   }
 
-  updateTodo( id:number, todo:Todo ){
-    this.todos[id] = todo;
+  updateTodo( id:number, updateTodo:Todo ){
+    this.todos.map( todo => {
+      if(todo.id === id ){
+        todo.todo = updateTodo.todo;
+        todo.done = updateTodo.done;
+      } 
+    });
     localStorage.setItem('todos', JSON.stringify( this.todos ) );
   }
 
   deleteTodo( id:number ){
-
-    this.todos.splice( id, 1);
+    this.todos = this.todos.filter( todo => todo.id !== id);
     localStorage.setItem('todos', JSON.stringify( this.todos ) );
 
   }
