@@ -11,7 +11,7 @@ import { Todo } from '../../interfaces/todo.interface';
 export class TodosGridComponent implements OnInit, OnChanges {
 
   @Input() filterTodos: string;
-  public todos: Todo[];
+  public todos: Todo[]= [];
   public animate:boolean;
   public showModal:boolean = false;
   public showUpdateModal:boolean = false;

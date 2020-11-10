@@ -8,6 +8,7 @@ import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TodosGridComponent } from './components/todos-grid/todos-grid.component';
 import { SetAutofocusDirective } from './directives/set-autofocus.directive';
+import { NoTodosComponent } from './components/no-todos/no-todos.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SetAutofocusDirective } from './directives/set-autofocus.directive';
     NewTodoComponent,
     FooterComponent,
     TodosGridComponent,
-    SetAutofocusDirective
+    SetAutofocusDirective,
+    NoTodosComponent
   ],
   imports: [
     BrowserModule

@@ -1,28 +1,28 @@
 
-<ul id="to-dos-wrapper">
-    <ng-container *ngIf="todos">
-        <li class="to-do-item fading-in"
-            *ngFor="let todo of todos; let i=index;"
-            #todoItem>     
-            <div class="to-do" >
-                <input type="checkbox" 
-                       [checked]=" todo.done "
-                       (change)="completeTodo( todo.id, !todo.done )"
-                        >
-                <span class="custom-checkbox"></span>
-                <p class="to-do-text"
-                [class.to-do-done] = "todo.done ">{{ todo.todo }}</p>
-            </div>
-            <div class="edit-to-do">
-                <button class="edit" 
-                        type="button"
-                        (click)=" getTodo( todo.id ) "><i class="far fa-edit"></i></button>
-                <button class="delete" 
-                        type="button"
-                        (click)=" deleteTodo( todo.id , todoItem )" ><i class="far fa-trash-alt"></i></button>
-            </div>
-        </li>
-    </ng-container>
+<app-no-todos *ngIf=" !todos || todos.length === 0"></app-no-todos>
+<ul id="to-dos-wrapper" *ngIf="todos.length > 0">
+
+    <li class="to-do-item fading-in"
+        *ngFor="let todo of todos; let i=index;"
+        #todoItem>     
+        <div class="to-do" >
+            <input type="checkbox" 
+                    [checked]=" todo.done "
+                    (change)="completeTodo( todo.id, !todo.done )"
+                    >
+            <span class="custom-checkbox"></span>
+            <p class="to-do-text"
+            [class.to-do-done] = "todo.done ">{{ todo.todo }}</p>
+        </div>
+        <div class="edit-to-do">
+            <button class="edit" 
+                    type="button"
+                    (click)=" getTodo( todo.id ) "><i class="far fa-edit"></i></button>
+            <button class="delete" 
+                    type="button"
+                    (click)=" deleteTodo( todo.id , todoItem )" ><i class="far fa-trash-alt"></i></button>
+        </div>
+    </li>
     
 </ul>
 

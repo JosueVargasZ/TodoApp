@@ -25,7 +25,7 @@ body{
 }
 
 
-/*==========Header==========*/
+/*==========Navbar Component==========*/
 header{
     /* margin-top: 30px; */
     width: 100%;
@@ -133,7 +133,8 @@ header #title > h1{
 }
 
 
-/*==========To-dos==========*/
+/*==========Todos Component==========*/
+
 #to-dos-wrapper{
     /* margin-top: 30px; */
     background-color: #ffffff;
@@ -267,8 +268,8 @@ header #title > h1{
     color: #7c41c5a6;
 }
 
+/*==========Todos Grid Component==========*/
 
-/*==========To-dos Grid==========*/
 #to-dos-grid-wrapper{
     /* margin-top: 30px; */
     background-color: #ffffff;
@@ -377,6 +378,95 @@ header #title > h1{
 .to-do-grid-item > .edit-to-do > button i{
     opacity: 0.5;
 }
+
+/*==========No Todos component==========*/
+
+#no-to-dos-wrapper{
+    /* margin-top: 30px; */
+    background-color: #ffffff;
+    box-shadow:
+        0 0.6px 3.4px rgba(0, 0, 0, 0.022),
+        0 1.5px 8.7px rgba(0, 0, 0, 0.031),
+        0 3px 17.7px rgba(0, 0, 0, 0.039),
+        0 6px 36.5px rgba(0, 0, 0, 0.048),
+        0 16px 100px rgba(0, 0, 0, 0.07);
+    padding: 40px 20px;
+    min-height: 400px; 
+    display: flex;
+    /* flex-flow: row wrap; */
+    align-items: center;
+    justify-content: center;
+
+}
+
+.hero-no-todo{
+    flex-basis: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.hero-title{
+    flex-basis: 100%;
+    font-size: 22px;
+    color: var(--secondaryColor);
+    text-align: center;
+}
+
+.hero-arrow{
+    flex-basis: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.arrow{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 10px solid;
+    border-color: transparent var(--textColor) var(--textColor) transparent;
+    transform: rotate(45deg);
+}
+
+.first-arrow{
+    opacity: 0.4;
+    top: 0;
+}
+
+.second-arrow{
+    opacity: 0.7;
+    top: 22px;
+}
+
+.third-arrow{
+    opacity: 1;
+    top: 44px;
+}
+
+/* .arrow::before,
+.arrow::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-bottom: 4px solid var(--textColor);
+    border-right: 4px solid var(--textColor);
+}
+
+.arrow::before{
+    top: 10px;
+    left: 10px;
+}
+.arrow::after{
+    top: 20px;
+    left: 20px;
+} */
+
+/*==========Create Task==========*/
 
 
 #create-task{
@@ -672,6 +762,12 @@ footer div span{
         grid-template-columns: repeat(3, 30%);
     }
 
+    
+    #no-to-dos-wrapper{
+        margin-top: 30px;
+        padding: 40px 40px;
+    }
+
     .to-do-item > .to-do{
         flex-basis: 90%;
     }
@@ -717,6 +813,7 @@ footer div span{
     #to-dos-grid-wrapper{
         grid-template-columns: repeat(4, 23%);
     }
+
     .to-do-item > .to-do{
         flex-basis: 90%;
     }
