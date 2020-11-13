@@ -1,4 +1,4 @@
-/*==========General==========*/
+/*==========General styling==========*/
 *{
     margin: 0;
     padding: 0;
@@ -26,8 +26,8 @@ body{
 
 
 /*==========Navbar Component==========*/
+
 header{
-    /* margin-top: 30px; */
     width: 100%;
     background-color: var(--primaryColor);
     height: 40px;
@@ -136,7 +136,6 @@ header #title > h1{
 /*==========Todos Component==========*/
 
 #to-dos-wrapper{
-    /* margin-top: 30px; */
     background-color: #ffffff;
     box-shadow:
         0 0.6px 3.4px rgba(0, 0, 0, 0.022),
@@ -271,7 +270,6 @@ header #title > h1{
 /*==========Todos Grid Component==========*/
 
 #to-dos-grid-wrapper{
-    /* margin-top: 30px; */
     background-color: #ffffff;
     box-shadow:
         0 0.6px 3.4px rgba(0, 0, 0, 0.022),
@@ -379,10 +377,9 @@ header #title > h1{
     opacity: 0.5;
 }
 
-/*==========No Todos component==========*/
+/*==========No-Todos component==========*/
 
 #no-to-dos-wrapper{
-    /* margin-top: 30px; */
     background-color: #ffffff;
     box-shadow:
         0 0.6px 3.4px rgba(0, 0, 0, 0.022),
@@ -393,7 +390,6 @@ header #title > h1{
     padding: 40px 20px;
     min-height: 400px; 
     display: flex;
-    /* flex-flow: row wrap; */
     align-items: center;
     justify-content: center;
 
@@ -413,6 +409,7 @@ header #title > h1{
     font-size: 22px;
     color: var(--secondaryColor);
     text-align: center;
+    animation: new-task-text 3s infinite ease-in-out;
 }
 
 .hero-arrow{
@@ -424,47 +421,46 @@ header #title > h1{
 }
 .arrow{
     position: absolute;
-    width: 50px;
-    height: 50px;
-    border: 10px solid;
+    width: 25px;
+    height: 25px;
+    border: 6px solid;
+    border-radius: 0px 0px 4px 0px;
     border-color: transparent var(--textColor) var(--textColor) transparent;
     transform: rotate(45deg);
-}
-
-.first-arrow{
-    opacity: 0.4;
     top: 0;
+    animation: main-arrow 3s infinite ease-in-out;
 }
 
-.second-arrow{
-    opacity: 0.7;
-    top: 22px;
+
+/*==========Arrow animations==========*/
+
+@keyframes new-task-text {
+    0%{
+        opacity: 0.80;
+        
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.80;
+    }
 }
 
-.third-arrow{
-    opacity: 1;
-    top: 44px;
+@keyframes main-arrow {
+    0%{
+        opacity: 0;
+        top: 0;
+    }
+    50%{
+        opacity: 0.40;
+        top: 15px;
+    }
+    100%{
+        opacity: 0;
+        top: 0;
+    }
 }
-
-/* .arrow::before,
-.arrow::after{
-    content: '';
-    display: block;
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    border-bottom: 4px solid var(--textColor);
-    border-right: 4px solid var(--textColor);
-}
-
-.arrow::before{
-    top: 10px;
-    left: 10px;
-}
-.arrow::after{
-    top: 20px;
-    left: 20px;
-} */
 
 /*==========Create Task==========*/
 
@@ -509,7 +505,6 @@ header #title > h1{
 }
 
 /*==========Modal New todo==========*/
-
 
 .todo-modal{
     position: fixed;
@@ -592,7 +587,28 @@ header #title > h1{
     color: var(--secondaryColor);
 }
 
-/*==========Animations==========*/
+/*==========Footer Component==========*/
+
+footer{
+    position: relative;
+    bottom: 0px;
+    height: 60px;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+footer div span{
+    font-size: 14px;
+    color: var(--textColor);
+}
+
+
+/*==========General Animations==========*/
 
 .fading-in{
     animation: fadeIn 400ms ease-in;
@@ -605,9 +621,6 @@ header #title > h1{
 .slide-out{
     animation: slideOut 400ms ease-out;
 }
-
-
-
 
 @keyframes fadeIn{
     from{
@@ -640,28 +653,12 @@ header #title > h1{
     }
 }
 
+/*==========Responsive Design-==========
+    -Mobile first design >450px
+    -Screen size: 450px, 576px, 768px and 992px
+*/
 
-
-
-
-footer{
-    position: relative;
-    bottom: 0px;
-    height: 60px;
-    margin-top: 30px;
-    padding-bottom: 30px;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-
-}
-
-footer div span{
-    font-size: 14px;
-    color: var(--textColor);
-}
-
+/*==========mobile size for big screen-==========*/
 @media only screen and (min-width: 450px){
 
     header #view-toggle{
@@ -691,7 +688,7 @@ footer div span{
 
 }
 
-
+/*==========mobile size for big screen-==========*/
 
 @media only screen and (min-width: 576px){
     
@@ -733,6 +730,8 @@ footer div span{
     }
 
 }
+
+/*==========Tablet size-==========*/
 
 @media only screen and (min-width: 768px){
 
@@ -786,6 +785,8 @@ footer div span{
     }
 
 }
+
+/*==========Desktop size-==========*/
 
 @media only screen and (min-width: 992px){
 

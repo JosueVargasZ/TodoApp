@@ -1,6 +1,6 @@
 
-<app-no-todos *ngIf=" !todos || todos.length === 0"></app-no-todos>
-<div id="to-dos-grid-wrapper" *ngIf="todos.length > 0">
+<app-no-todos *ngIf=" !todos || todos.length === 0 && filterTodos !== 'Completed' "></app-no-todos>
+<div id="to-dos-grid-wrapper" *ngIf="todos.length > 0 || filterTodos === 'Completed' ">
     
     <div class="to-do-grid-item fading-in"
         [class.to-do-grid-done]="todo.done"

@@ -1,6 +1,6 @@
 
-<app-no-todos *ngIf=" !todos || todos.length === 0"></app-no-todos>
-<ul id="to-dos-wrapper" *ngIf="todos.length > 0">
+<app-no-todos *ngIf=" !todos || todos.length === 0 && filterTodos !== 'Completed' "></app-no-todos>
+<ul id="to-dos-wrapper" *ngIf="todos.length > 0 || filterTodos === 'Completed'">
 
     <li class="to-do-item fading-in"
         *ngFor="let todo of todos; let i=index;"
